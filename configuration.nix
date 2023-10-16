@@ -43,13 +43,18 @@ in {
 
   boot.kernelParams = [
     "console=ttyS0,115200"
+
+    # For systemd debugging:
+    #
+    # "systemd.log_level=debug"
+    # "systemd.journald.forward_to_console=1"
   ];
 
   fileSystems."/".device = "/dev/disk/by-label/nixos";
   fileSystems."/nix/store".device = "/dev/disk/by-partlabel/nix-store";
 
   # TODO Populate these automatically from the repart config.
-  boot.initrd.availableKernelModules = [ "erofs" "squashfs" ];
+  boot.initrd.availableKernelModules = [ "erofs" "squashfs" "ext4" ];
 
   # See here for documentation:
   #
