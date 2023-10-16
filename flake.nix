@@ -19,5 +19,19 @@
         ./perlless.nix
       ];
     };
+
+    devShells.x86_64-linux.default = let
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+    in pkgs.mkShell {
+      packages = let
+        qemuUefi = pkgs.writeShellScriptBin "qemu-uefi" ''
+          exec ${pkgs.qemu}/bin/qemu-system-x86_64 \
+            -machine q35,accel=kvm -cpu host -bios ${pkgs.OVMF.fd}/FV/OVMF.fd \
+            -m 4096 -serial stdio "$@"
+          '';
+        in [
+          qemuUefi
+      ];
+    };
   };
 }
