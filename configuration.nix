@@ -25,7 +25,6 @@ in {
   nix.enable = false;
   # i18n.supportedLocales = [  "C.UTF-8" ];
   environment.defaultPackages = [];
-  fonts.fontconfig.enable = false;
 
   # Network config
   networking.useNetworkd = true;
@@ -37,6 +36,7 @@ in {
   security.sudo.wheelNeedsPassword = false;
 
   # Boot
+  boot.initrd.systemd.enable = true;
   boot.loader.grub.enable = false;
 
   boot.kernelPackages = pkgs.linuxPackages_latest;

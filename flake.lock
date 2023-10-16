@@ -2,16 +2,16 @@
   "nodes": {
     "nixpkgs": {
       "locked": {
-        "lastModified": 1697059129,
-        "narHash": "sha256-9NJcFF9CEYPvHJ5ckE8kvINvI84SZZ87PvqMbH6pro0=",
-        "owner": "NixOS",
+        "lastModified": 1697464598,
+        "narHash": "sha256-XWr2EW7+KcVY9Y9l9Nk9s3bDGx9tSVNPEUGHcx2woOg=",
+        "owner": "nikstur",
         "repo": "nixpkgs",
-        "rev": "5e4c2ada4fcd54b99d56d7bd62f384511a7e2593",
+        "rev": "cf2ee37115f49f0c009f670e7b0a4e687ec037d6",
         "type": "github"
       },
       "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
+        "owner": "nikstur",
+        "ref": "perlless-activation",
         "repo": "nixpkgs",
         "type": "github"
       }
