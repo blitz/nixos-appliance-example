@@ -7,20 +7,6 @@ in {
     "${modulesPath}/profiles/appliance.nix"
   ];
 
-  nixpkgs.overlays = [
-    (final: prev: {
-      # TODO Using erofs here generates a corrupted fs.
-      erofs-utils = prev.erofs-utils.overrideAttrs (old: rec {
-        version = "1.6";
-        src =  prev.fetchurl {
-          url =
-            "https://git.kernel.org/pub/scm/linux/kernel/git/xiang/erofs-utils.git/snapshot/erofs-utils-${version}.tar.gz";
-          sha256 = "sha256-2/Gtrv8buFMrKacsip4ZGTjJOJlGdw3HY9PFnm8yBXE=";
-        };
-      });
-    })
-  ];
-
   # Debug
   environment.systemPackages = with pkgs; [
     # strace
@@ -61,6 +47,8 @@ in {
   # https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/image/repart.md
   image.repart = {
     name = "image";
+    split = true;
+
     partitions = {
       "esp" = {
         contents = {
@@ -94,7 +82,7 @@ in {
           Type = "linux-generic";
           Label = "nix-store";
 
-          Format = "squashfs";
+          Format = "erofs";
           Minimize = "best";
         };
       };
