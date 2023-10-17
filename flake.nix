@@ -5,7 +5,7 @@
     # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # Experimental fork that creates users without Perl in the closure.
-    nixpkgs.url = "github:nikstur/nixpkgs/perlless-activation";
+    nixpkgs.url = "github:blitz/nixpkgs/perlless-activation";
 
     nixpkgs-vanilla.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
