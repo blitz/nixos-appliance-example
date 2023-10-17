@@ -1,10 +1,5 @@
 { lib, ... }:
 {
-
-  system.rebuildable = false;
-
-  users.users.root.initialPassword = "djodno";
-
   system.activationScripts.users = lib.mkForce "";
   system.activationScripts.borgbackup = lib.mkForce "";
   system.activationScripts.upsSetup = lib.mkForce "";

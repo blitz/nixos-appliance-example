@@ -16,7 +16,6 @@
 
       modules = [
         ./configuration.nix
-        ./minimization.nix
 
         # This is only required in nikstur's nixpkgs fork.
         ./perlless.nix

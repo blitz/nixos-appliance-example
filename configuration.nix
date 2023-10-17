@@ -4,6 +4,7 @@ let
 in {
   imports = [
     "${modulesPath}/image/repart.nix"
+    "${modulesPath}/profiles/appliance.nix"
   ];
 
   nixpkgs.overlays = [
