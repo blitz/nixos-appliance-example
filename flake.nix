@@ -2,26 +2,29 @@
   description = "System Configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # Experimental fork that creates users without Perl in the closure.
-    # nixpkgs.url = "github:nikstur/nixpkgs/perlless-activation";
+    nixpkgs.url = "github:nikstur/nixpkgs/perlless-activation";
+
+    nixpkgs-vanilla.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
-  outputs = { self, nixpkgs }: {
+  outputs = { self, nixpkgs, nixpkgs-vanilla }: {
     nixosConfigurations.image = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
       modules = [
         ./configuration.nix
+        ./minimization.nix
 
         # This is only required in nikstur's nixpkgs fork.
-        # ./perlless.nix
+        ./perlless.nix
       ];
     };
 
     devShells.x86_64-linux.default = let
-      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      pkgs = nixpkgs-vanilla.legacyPackages.x86_64-linux;
     in pkgs.mkShell {
       packages = let
         qemuUefi = pkgs.writeShellScriptBin "qemu-uefi" ''

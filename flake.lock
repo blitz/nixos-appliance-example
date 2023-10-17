@@ -2,6 +2,22 @@
   "nodes": {
     "nixpkgs": {
       "locked": {
+        "lastModified": 1697471852,
+        "narHash": "sha256-LJB494O+ndWlzJdxBMACcprENZxLL8oAg2Lckd498W4=",
+        "owner": "nikstur",
+        "repo": "nixpkgs",
+        "rev": "1d639c7295c94e2ad89d948f2af0fcc0111cc31e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nikstur",
+        "ref": "perlless-activation",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-vanilla": {
+      "locked": {
         "lastModified": 1697059129,
         "narHash": "sha256-9NJcFF9CEYPvHJ5ckE8kvINvI84SZZ87PvqMbH6pro0=",
         "owner": "NixOS",
@@ -18,7 +34,8 @@
     },
     "root": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "nixpkgs-vanilla": "nixpkgs-vanilla"
       }
     }
   },

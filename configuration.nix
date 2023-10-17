@@ -4,7 +4,6 @@ let
 in {
   imports = [
     "${modulesPath}/image/repart.nix"
-    "${modulesPath}/profiles/minimal.nix"
   ];
 
   nixpkgs.overlays = [
@@ -21,10 +20,10 @@ in {
     })
   ];
 
-  # Minimization
-  nix.enable = false;
-  # i18n.supportedLocales = [  "C.UTF-8" ];
-  environment.defaultPackages = [];
+  # Debug
+  environment.systemPackages = with pkgs; [
+    # strace
+  ];
 
   # Network config
   networking.useNetworkd = true;
@@ -54,7 +53,7 @@ in {
   fileSystems."/nix/store".device = "/dev/disk/by-partlabel/nix-store";
 
   # TODO Populate these automatically from the repart config.
-  boot.initrd.availableKernelModules = [ "erofs" "squashfs" "ext4" ];
+  boot.initrd.availableKernelModules = [ "erofs" "squashfs" "ext4" "overlay" ];
 
   # See here for documentation:
   #
@@ -94,7 +93,7 @@ in {
           Type = "linux-generic";
           Label = "nix-store";
 
-          Format = "erofs";
+          Format = "squashfs";
           Minimize = "best";
         };
       };
